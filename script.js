@@ -1,20 +1,23 @@
-import * as root from "https://unpkg.com/three@0.161.0/build/three.module.js";'
-console.error("three js imported");
-const scene = new root.Scene();
-const camera = new root.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-camera.position.z = 5;
-const rend = new root.WebGLRenderer();
-rend.setSize(window.innerWidth, window.innerHeight);
-document.body.appendChild(rend.domElement);
-const geometry = new root.BoxGeometry(1, 1, 1);
-const material = new root.MeshBasicMaterial({ color: 0x00ff00 });
-const cube = new root.Mesh(geometry, material);
-scene.add(cube);
-function animate()
-{
-  requestAnimationFrame(animate);
-  cube.rotation.x += 0.01;
-  cube.rotation.y += 0.01;
-  rend.render(scene, camera);
-}
-animate();
+ import * as root from "https://unpkg.com/three@0.161.0/build/three.module.js";
+            const sc = new root.Scene();
+            sc.background = new root.Color(0xFF0000);
+            const cam = new root.PerspectiveCamera(70, window.innerWidth / window.innerHeight, .1, 1000);
+            sc.add(cam);
+            const mat = new root.MeshNormalMaterial();
+            const geo = new root.TorusGeometry(5, 1, 1000, 1000);
+            const mesh = new root.Mesh(geo, mat);
+            const input = document.getElementById("in");
+            sc.add(mesh);
+            const rend = new root.WebGLRenderer();
+            rend.setSize(window.innerWidth, window.innerHeight);
+            document.body.appendChild(rend.domElement);
+            cam.position.z = 30;
+            function animate(){
+                requestAnimationFrame(animate);
+                mesh.rotation.x += .1;
+                mesh.rotation.y += .1;
+                mesh.rotation.z += .1;
+                cam.position.z = parseInt(input.value);
+                rend.render(sc, cam);
+            }
+            animate();
