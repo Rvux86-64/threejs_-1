@@ -47,7 +47,7 @@ import * as root from "https://unpkg.com/three@0.161.0/build/three.module.js";
         The answer is no: by default we cannot see the "inside" of the geometry. We can see the face, but not its reverse side.
 
         So, now that we know the above, we should move the camera position outside of the cube. Moving up where we defined the camera variable, we add the following below that line:*/
-        cam.position.z = 15;
+        cam.position.z = 30;
         var ind = .01;
         mesh.rotation.y = 0.5;
         function animate() {
