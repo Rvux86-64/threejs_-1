@@ -21,7 +21,7 @@ TL/DR: The aspect ratio is just the width divided by the height. */
 sc.add(cam);
 
 /* This class automatically knows that it should create the cubes points once it receives its required parameters, which are the width, the height and the depth*/
-const geo = new root.TorusGeometry(4, 1, 1000, 1000);
+const geo = new root.TorusGeometry(10, 1, 1000, 1000);
 
 // Now it's time to add the material that our cube will use when it renders. For this first experiment we want our cube to be completely red. So we add the following:
 const mat = new root.MeshNormalMaterial();
